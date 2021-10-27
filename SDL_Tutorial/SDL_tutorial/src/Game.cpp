@@ -20,6 +20,7 @@ Game::Game() :
 	{
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
 	}
+	
 	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 0);
 
 	m_rect.x = 100;
@@ -50,19 +51,14 @@ void Game::run()
 	SDL_Event e{};
 
 	while (m_gameIsRunning)
-	{
-		
+	{		
 		processEvents(e);
 		update();
 		player.update();
 		render();
+
 		if (e.type == SDL_KEYDOWN)
-	{
-		switch (e.type)
 		{
-			// Deal with KeyPressed
-		case SDL_KEYDOWN:
-			// Died Event
 			if (e.key.keysym.sym == SDLK_d) {
 				DEBUG_MSG("gpp::Events::Event::DIED_EVENT");
 				input.setCurrent(gpp::Events::Event::DIED_EVENT);
@@ -190,10 +186,9 @@ void Game::run()
 				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
 				input.setCurrent(gpp::Events::Event::HIT_GROUND_EVENT);
 			}
-			break;
-				// Deal with KeyReleased
-		case SDL_KEYUP:
-			// Run and Stop Attack
+		}
+		else if (e.type == SDL_KEYUP)
+		{
 			if (e.key.keysym.sym == SDLK_z
 				&& 
 				e.key.keysym.sym == SDLK_RIGHT)
@@ -247,8 +242,9 @@ void Game::run()
 				DEBUG_MSG("gpp::Events::Event::MOVE_DOWN_STOP_EVENT");
 				input.setCurrent(gpp::Events::Event::MOVE_DOWN_STOP_EVENT);
 			}
-			break;
-		default:
+		}
+		else
+		{
 			DEBUG_MSG("gpp::Events::Event::NONE");
 			input.setCurrent(gpp::Events::Event::NONE);
 			break;
@@ -256,7 +252,6 @@ void Game::run()
 
 		// Handle input to Player
 		player.handleInput(input);
-	}
 	}
 
 	cleanUp();
