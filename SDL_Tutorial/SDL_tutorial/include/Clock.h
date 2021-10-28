@@ -16,10 +16,7 @@ public:
     Clock();
 
     void start();
-    void restart();
-
-    uint32_t getElapsedTime();
-    uint32_t getElapsedTimeAsSeconds();
+    float getElapsedTimeAsSeconds();
 };
 
 #endif 

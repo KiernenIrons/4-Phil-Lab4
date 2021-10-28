@@ -23,5 +23,5 @@ build:
 	#create bin directory
 	mkdir ${BUILD_DIR}
 
-	g++ -o ${BUILD_DIR}/${OUTPUT_NAME} ${COMP_FILES} -I${INCLUDE} -L${LIB} $(DLL)
+	g++ -o ${BUILD_DIR}/${OUTPUT_NAME} ${COMP_FILES} -I${INCLUDE} -I. -I./include -L${LIB} $(DLL)
 	@echo ${MSG_END}

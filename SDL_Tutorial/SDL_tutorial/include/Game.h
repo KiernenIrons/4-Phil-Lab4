@@ -4,9 +4,10 @@
 #include <cstdint>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include "../include/Defines.h"
-#include "../include/AnimatedSprite.h"
-#include "../include/Player.h"
+#include "Defines.h"
+#include "AnimatedSprite.h"
+#include "Player.h"
+#include "Command.h"
 
 class Game
 {
@@ -38,6 +39,7 @@ private:
 	Player player;
 
 	SDL_Texture* m_texture{ nullptr };
+	Command command;
 
 	inline SDL_Texture* loadFromFile(const char* const t_path, SDL_Renderer* t_renderer)
 	{

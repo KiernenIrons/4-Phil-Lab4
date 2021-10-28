@@ -1,9 +1,9 @@
-#include "../include/Events.h"
+#include "Events.h"
 
-#include "../include/RevivedPlayerState.h"
+#include "RevivedPlayerState.h"
 
-#include "../include/DiedPlayerState.h"
-#include "../include/IdlePlayerState.h"
+#include "DiedPlayerState.h"
+#include "IdlePlayerState.h"
 
 PlayerState* RevivedPlayerState::handleInput(gpp::Events& input)
 {
@@ -31,7 +31,7 @@ void RevivedPlayerState::enter(Player& player)
 	DEBUG_MSG("Entering RevivedPlayerState");
 
 	// How long in State Clock
-	this->m_clock.restart();
+	this->m_clock.start();
 
 	// Clear existing frames
 	player.getAnimatedSprite().clearFrames();

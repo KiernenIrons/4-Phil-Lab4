@@ -1,14 +1,14 @@
-#include "../include/Events.h"
+#include "Events.h"
 
-#include "../include/IdlePlayerState.h"
+#include "IdlePlayerState.h"
 
-#include "../include/AttackPlayerState.h"
-#include "../include/ThrowAttackPlayerState.h"
-#include "../include/RunRightPlayerState.h"
-#include "../include/AccendLadderPlayerState.h"
-#include "../include/DecendLadderPlayerState.h"
-#include "../include/JumpPlayerState.h"
-#include "../include/DiedPlayerState.h"
+#include "AttackPlayerState.h"
+#include "ThrowAttackPlayerState.h"
+#include "RunRightPlayerState.h"
+#include "AccendLadderPlayerState.h"
+#include "DecendLadderPlayerState.h"
+#include "JumpPlayerState.h"
+#include "DiedPlayerState.h"
 
 
 PlayerState* IdlePlayerState::handleInput(gpp::Events& input) {

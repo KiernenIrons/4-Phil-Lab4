@@ -1,8 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "../include/Events.h"
-#include "../include/PlayerState.h"
-#include "../include/AnimatedSprite.h"
+#include "Events.h"
+#include "PlayerState.h"
+#include "AnimatedSprite.h"
 
 class Player
 {

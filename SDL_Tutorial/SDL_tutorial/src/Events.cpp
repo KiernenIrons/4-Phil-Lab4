@@ -1,4 +1,4 @@
-#include "../include/Events.h"
+#include "Events.h"
 
 gpp::Events::Events()
 {

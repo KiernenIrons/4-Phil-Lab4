@@ -1,9 +1,9 @@
-#include "../include/Events.h"
+#include "Events.h"
 
-#include "../include/ClimbDownPlayerState.h"
+#include "ClimbDownPlayerState.h"
 
-#include "../include/ClimbPausePlayerState.h"
-#include "../include/AccendLadderPlayerState.h"
+#include "ClimbPausePlayerState.h"
+#include "AccendLadderPlayerState.h"
 
 
 PlayerState* ClimbDownPlayerState::handleInput(gpp::Events& input)

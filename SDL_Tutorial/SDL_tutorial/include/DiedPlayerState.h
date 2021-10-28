@@ -1,8 +1,8 @@
 #ifndef DIED_PLAYER_STATE_H
 #define DIED_PLAYER_STATE_H
 
-#include "../include/Player.h"
-#include "../include/PlayerState.h"
+#include "Player.h"
+#include "PlayerState.h"
 
 class DiedPlayerState : public PlayerState {
 public:

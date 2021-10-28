@@ -1,8 +1,8 @@
-#include "../include/Clock.h"
+#include "Clock.h"
 
 Clock::Clock()
 {
-    restart();
+    start();
 }
 
 void Clock::start()
@@ -10,13 +10,7 @@ void Clock::start()
     m_start = SDL_GetTicks();
 }
 
-void Clock::restart()
+float Clock::getElapsedTimeAsSeconds()
 {
-    m_start = 0;
-    start();
-}
-
-uint32_t Clock::getElapsedTimeAsSeconds()
-{
-    return SDL_GetTicks() / 1000.0f;
+    return static_cast<float>(SDL_GetTicks() - m_start) / 1000.0f;
 }

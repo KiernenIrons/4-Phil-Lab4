@@ -1,9 +1,9 @@
 #ifndef GLIDE_PLAYER_STATE_H
 #define GLIDE_PLAYER_STATE_H
 
-#include "../include/Player.h"
-#include "../include/PlayerState.h"
-#include "../include/Clock.h"
+#include "Player.h"
+#include "PlayerState.h"
+#include "Clock.h"
 
 class GlidePlayerState : public PlayerState {
 public:

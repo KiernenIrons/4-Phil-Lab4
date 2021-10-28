@@ -1,4 +1,4 @@
-#include "../include/AnimatedSprite.h"
+#include "AnimatedSprite.h"
 
 AnimatedSprite::AnimatedSprite() : 
 	m_current_frame(0),
@@ -101,7 +101,7 @@ void AnimatedSprite::update(){
 				m_current_frame = 0;
 				m_played = true;
 			}
-			m_clock.restart();
+			m_clock.start();
 		}
 	}
 	

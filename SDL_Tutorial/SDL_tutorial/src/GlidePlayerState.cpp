@@ -1,9 +1,9 @@
-#include "../include/Events.h"
+#include "Events.h"
 
-#include "../include/GlidePlayerState.h"
+#include "GlidePlayerState.h"
 
-#include "../include/DiedPlayerState.h"
-#include "../include/IdlePlayerState.h"
+#include "DiedPlayerState.h"
+#include "IdlePlayerState.h"
 
 PlayerState* GlidePlayerState::handleInput(gpp::Events& input)
 {

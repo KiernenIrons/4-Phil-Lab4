@@ -1,10 +1,10 @@
-#include "../include/Events.h"
+#include "Events.h"
 
-#include "../include/JumpThrowAttackPlayerState.h"
+#include "JumpThrowAttackPlayerState.h"
 
-#include "../include/RunRightPlayerState.h"
-#include "../include/GlidePlayerState.h"
-#include "../include/DiedPlayerState.h"
+#include "RunRightPlayerState.h"
+#include "GlidePlayerState.h"
+#include "DiedPlayerState.h"
 
 PlayerState* JumpThrowAttackPlayerState::handleInput(gpp::Events& input)
 {

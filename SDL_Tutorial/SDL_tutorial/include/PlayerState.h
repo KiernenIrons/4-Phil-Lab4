@@ -1,8 +1,8 @@
 #ifndef PLAYER_STATE_H
 #define PLAYER_STATE_H
 
-#include "../include/Debug.h"
-#include "../include/Events.h"
+#include "Debug.h"
+#include "Events.h"
 
 class Player;
 

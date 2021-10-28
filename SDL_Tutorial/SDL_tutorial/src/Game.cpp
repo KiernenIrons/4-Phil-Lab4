@@ -1,4 +1,4 @@
-#include "../include/Game.h"
+#include "Game.h"
 
 Game::Game() :
 	m_gameIsRunning{ false }
@@ -44,214 +44,16 @@ Game::~Game()
 }
 
 void Game::run()
-{
-	gpp::Events input;
-
+{	
 	m_gameIsRunning = true;
 	SDL_Event e{};
 
 	while (m_gameIsRunning)
-	{		
+	{
 		processEvents(e);
 		update();
 		player.update();
 		render();
-
-		if (e.type == SDL_KEYDOWN)
-		{
-			if (e.key.keysym.sym == SDLK_d) {
-				DEBUG_MSG("gpp::Events::Event::DIED_EVENT");
-				input.setCurrent(gpp::Events::Event::DIED_EVENT);
-			}
-			// Revieved Event
-			else if (e.key.keysym.sym == SDLK_r) {
-				DEBUG_MSG("gpp::Events::Event::REVIVED_EVENT");
-				input.setCurrent(gpp::Events::Event::REVIVED_EVENT);
-			}
-			// Running attack
-			else if (e.key.keysym.sym == SDLK_z 
-				&& 
-				e.key.keysym.sym == SDLK_RIGHT
-				||
-				e.key.keysym.sym == SDLK_RIGHT
-				&& 
-				e.key.keysym.sym == SDLK_z
-				)
-			{
-				DEBUG_MSG("gpp::Events::Event::ATTACK_START");
-				input.setCurrent(gpp::Events::Event::ATTACK_START_EVENT);
-			}
-			// Attack
-			else if (e.key.keysym.sym == SDLK_z)
-			{
-				DEBUG_MSG("gpp::Events::Event::ATTACK_START_EVENT");
-				input.setCurrent(gpp::Events::Event::ATTACK_START_EVENT);
-			}
-			// Throw attack
-			else if (e.key.keysym.sym == SDLK_x
-				&& 
-				e.key.keysym.sym == SDLK_RIGHT
-				||
-				e.key.keysym.sym == SDLK_RIGHT 
-				&& 
-				e.key.keysym.sym == SDLK_x
-				)
-			{
-				DEBUG_MSG("gpp::Events::Event::THROW_START_EVENT");
-				input.setCurrent(gpp::Events::Event::THROW_START_EVENT);
-			}
-			// Throw Attack
-			else if (e.key.keysym.sym == SDLK_x)
-			{
-				DEBUG_MSG("gpp::Events::Event::THROW_START_EVENT");
-				input.setCurrent(gpp::Events::Event::THROW_START_EVENT);
-			}
-			// Run Right
-			else if (e.key.keysym.sym == SDLK_RIGHT)
-			{
-				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
-				input.setCurrent(gpp::Events::Event::RUN_RIGHT_START_EVENT);
-			}
-			// Climb Up
-			else if (e.key.keysym.sym == SDLK_UP)
-			{
-				DEBUG_MSG("gpp::Events::Event::MOVE_UP_START_EVENT");
-				input.setCurrent(gpp::Events::Event::MOVE_UP_START_EVENT);
-			}
-			// Climb Down
-			else if (e.key.keysym.sym == SDLK_DOWN)
-			{
-				DEBUG_MSG("gpp::Events::Event::MOVE_DOWN_START_EVENT");
-				input.setCurrent(gpp::Events::Event::MOVE_DOWN_START_EVENT);
-			}
-			// Hit Bottom of Ladder Event
-			else if (e.key.keysym.sym == SDLK_c)
-			{
-				DEBUG_MSG("gpp::Events::Event::HIT_LADDER_BOTTOM_EVENT");
-				input.setCurrent(gpp::Events::Event::HIT_LADDER_BOTTOM_EVENT);
-			}
-			// Hit Top of Ladder Event
-			else if (e.key.keysym.sym == SDLK_t)
-			{
-				DEBUG_MSG("gpp::Events::Event::HIT_LADDER_TOP_EVENT");
-				input.setCurrent(gpp::Events::Event::HIT_LADDER_TOP_EVENT);
-			}
-			// Jump Run
-			if (e.key.keysym.sym == SDLK_SPACE 
-				&& 
-				e.key.keysym.sym == SDLK_RIGHT
-				||
-				e.key.keysym.sym == SDLK_RIGHT 
-				&& 
-				e.key.keysym.sym == SDLK_SPACE
-				)
-			{
-				DEBUG_MSG("gpp::Events::Event::JUMP_UP_EVENT");
-				input.setCurrent(gpp::Events::Event::JUMP_UP_EVENT);
-			}
-			// Jump Event
-			else if (e.key.keysym.sym == SDLK_SPACE)
-			{
-				DEBUG_MSG("gpp::Events::Event::JUMP_UP_EVENT");
-				input.setCurrent(gpp::Events::Event::JUMP_UP_EVENT);
-			}
-			// Running Slide
-			else if (e.key.keysym.sym == SDLK_DOWN
-				&& 
-				e.key.keysym.sym == SDLK_RIGHT
-				||
-				e.key.keysym.sym == SDLK_RIGHT
-				&& 
-				e.key.keysym.sym == SDLK_DOWN
-				)
-			{
-				DEBUG_MSG("gpp::Events::Event::SLIDE_EVENT");
-				input.setCurrent(gpp::Events::Event::SLIDE_EVENT);
-			}
-			// Hit Ground Event
-			else if (e.key.keysym.sym == SDLK_h)
-			{
-				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
-				input.setCurrent(gpp::Events::Event::HIT_GROUND_EVENT);
-			}
-				// Jump Attack Event
-			else if (e.key.keysym.sym == SDLK_h)
-			{
-				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
-				input.setCurrent(gpp::Events::Event::HIT_GROUND_EVENT);
-			}
-				// Jump Throw Attack Event
-			else if (e.key.keysym.sym == SDLK_h)
-			{
-				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
-				input.setCurrent(gpp::Events::Event::HIT_GROUND_EVENT);
-			}
-		}
-		else if (e.type == SDL_KEYUP)
-		{
-			if (e.key.keysym.sym == SDLK_z
-				&& 
-				e.key.keysym.sym == SDLK_RIGHT)
-			{
-				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
-				input.setCurrent(gpp::Events::Event::RUN_RIGHT_START_EVENT);
-			}
-			// Stop Attack
-			else if(e.key.keysym.sym == SDLK_z)
-			{
-				DEBUG_MSG("gpp::Events::Event::ATTACK_STOP_EVENT");
-				input.setCurrent(gpp::Events::Event::ATTACK_STOP_EVENT);
-			}
-			// Run and Stop Throw Attack
-			else if (e.key.keysym.sym == SDLK_x
-				&&
-				e.key.keysym.sym == SDLK_RIGHT)
-			{
-				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
-				input.setCurrent(gpp::Events::Event::RUN_RIGHT_START_EVENT);
-			}
-			// Stop Throw Attack
-			else if (e.key.keysym.sym == SDLK_x)
-			{
-				DEBUG_MSG("gpp::Events::Event::THROW_STOP_EVENT");
-				input.setCurrent(gpp::Events::Event::THROW_STOP_EVENT);
-			}
-			// Stop Running Right
-			else if (e.key.keysym.sym == SDLK_RIGHT)
-			{
-				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_STOP_EVENT");
-				input.setCurrent(gpp::Events::Event::RUN_RIGHT_STOP_EVENT);
-			}
-			// Stop Slide
-			else if (e.key.keysym.sym == SDLK_DOWN 
-				&&
-				e.key.keysym.sym == SDLK_RIGHT)
-			{
-				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
-				input.setCurrent(gpp::Events::Event::RUN_RIGHT_START_EVENT);
-			}
-			// Stop Moving Up
-			else if (e.key.keysym.sym == SDLK_UP)
-			{
-				DEBUG_MSG("gpp::Events::Event::MOVE_UP_STOP_EVENT");
-				input.setCurrent(gpp::Events::Event::MOVE_UP_STOP_EVENT);
-			}
-			// Stop Moving Down
-			else if (e.key.keysym.sym == SDLK_DOWN)
-			{
-				DEBUG_MSG("gpp::Events::Event::MOVE_DOWN_STOP_EVENT");
-				input.setCurrent(gpp::Events::Event::MOVE_DOWN_STOP_EVENT);
-			}
-		}
-		else
-		{
-			DEBUG_MSG("gpp::Events::Event::NONE");
-			input.setCurrent(gpp::Events::Event::NONE);
-			break;
-		}
-
-		// Handle input to Player
-		player.handleInput(input);
 	}
 
 	cleanUp();
@@ -259,6 +61,8 @@ void Game::run()
 
 void Game::processEvents(SDL_Event t_e)
 {
+	gpp::Events input;
+
 	// simple event loop
 	while (SDL_PollEvent(&t_e) != 0)
 	{
@@ -273,6 +77,185 @@ void Game::processEvents(SDL_Event t_e)
 			m_gameIsRunning = false;
 		}
 
+		if (t_e.type == SDL_KEYDOWN) // Deal with KeyPressed
+		{
+			// Died Event
+			if (t_e.key.keysym.sym == SDLK_d)
+			{
+				DEBUG_MSG("gpp::Events::Event::DIED_EVENT");
+				command.execute(&input, gpp::Events::Event::DIED_EVENT);
+			}
+			// Revieved Event
+			else if (t_e.key.keysym.sym == SDLK_r)
+			{
+				DEBUG_MSG("gpp::Events::Event::REVIVED_EVENT");
+				command.execute(&input, gpp::Events::Event::REVIVED_EVENT);
+			}
+			// Running attack
+			else if (t_e.key.keysym.sym == SDLK_z &&
+						 t_e.key.keysym.sym == SDLK_RIGHT ||
+					 t_e.key.keysym.sym == SDLK_RIGHT &&
+						 t_e.key.keysym.sym == SDLK_z)
+			{
+				DEBUG_MSG("gpp::Events::Event::ATTACK_START");
+				command.execute(&input, gpp::Events::Event::ATTACK_START_EVENT);
+			}
+			// Attack
+			else if (t_e.key.keysym.sym == SDLK_z)
+			{
+				DEBUG_MSG("gpp::Events::Event::ATTACK_START_EVENT");
+				command.execute(&input, gpp::Events::Event::ATTACK_START_EVENT);
+			}
+			// Throw attack
+			else if (t_e.key.keysym.sym == SDLK_x &&
+						 t_e.key.keysym.sym == SDLK_RIGHT ||
+					 t_e.key.keysym.sym == SDLK_RIGHT &&
+						 t_e.key.keysym.sym == SDLK_x)
+			{
+				DEBUG_MSG("gpp::Events::Event::THROW_START_EVENT");
+				command.execute(&input, gpp::Events::Event::THROW_START_EVENT);
+			}
+			// Throw Attack
+			else if (t_e.key.keysym.sym == SDLK_x)
+			{
+				DEBUG_MSG("gpp::Events::Event::THROW_START_EVENT");
+				command.execute(&input, gpp::Events::Event::THROW_START_EVENT);
+			}
+			// Run Right
+			else if (t_e.key.keysym.sym == SDLK_RIGHT)
+			{
+				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
+				command.execute(&input, gpp::Events::Event::RUN_RIGHT_START_EVENT);
+			}
+			// Climb Up
+			else if (t_e.key.keysym.sym == SDLK_UP)
+			{
+				DEBUG_MSG("gpp::Events::Event::MOVE_UP_START_EVENT");
+				command.execute(&input, gpp::Events::Event::MOVE_UP_START_EVENT);
+			}
+			// Climb Down
+			else if (t_e.key.keysym.sym == SDLK_DOWN)
+			{
+				DEBUG_MSG("gpp::Events::Event::MOVE_DOWN_START_EVENT");
+				command.execute(&input, gpp::Events::Event::MOVE_DOWN_START_EVENT);
+			}
+			// Hit Bottom of Ladder Event
+			else if (t_e.key.keysym.sym == SDLK_c)
+			{
+				DEBUG_MSG("gpp::Events::Event::HIT_LADDER_BOTTOM_EVENT");
+				command.execute(&input, gpp::Events::Event::HIT_LADDER_BOTTOM_EVENT);
+			}
+			// Hit Top of Ladder Event
+			else if (t_e.key.keysym.sym == SDLK_t)
+			{
+				DEBUG_MSG("gpp::Events::Event::HIT_LADDER_TOP_EVENT");
+				command.execute(&input, gpp::Events::Event::HIT_LADDER_TOP_EVENT);
+			}
+			// Jump Run
+			if (t_e.key.keysym.sym == SDLK_SPACE &&
+					t_e.key.keysym.sym == SDLK_RIGHT ||
+				t_e.key.keysym.sym == SDLK_RIGHT &&
+					t_e.key.keysym.sym == SDLK_SPACE)
+			{
+				DEBUG_MSG("gpp::Events::Event::JUMP_UP_EVENT");
+				command.execute(&input, gpp::Events::Event::JUMP_UP_EVENT);
+			}
+			// Jump Event
+			else if (t_e.key.keysym.sym == SDLK_SPACE)
+			{
+				DEBUG_MSG("gpp::Events::Event::JUMP_UP_EVENT");
+				command.execute(&input, gpp::Events::Event::JUMP_UP_EVENT);
+			}
+			// Running Slide
+			else if (t_e.key.keysym.sym == SDLK_DOWN &&
+						 t_e.key.keysym.sym == SDLK_RIGHT ||
+					 t_e.key.keysym.sym == SDLK_RIGHT &&
+						 t_e.key.keysym.sym == SDLK_DOWN)
+			{
+				DEBUG_MSG("gpp::Events::Event::SLIDE_EVENT");
+				command.execute(&input, gpp::Events::Event::SLIDE_EVENT);
+			}
+			// Hit Ground Event
+			else if (t_e.key.keysym.sym == SDLK_h)
+			{
+				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
+				command.execute(&input, gpp::Events::Event::HIT_GROUND_EVENT);
+			}
+			// Jump Attack Event
+			else if (t_e.key.keysym.sym == SDLK_h)
+			{
+				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
+				command.execute(&input, gpp::Events::Event::HIT_GROUND_EVENT);
+			}
+			// Jump Throw Attack Event
+			else if (t_e.key.keysym.sym == SDLK_h)
+			{
+				DEBUG_MSG("gpp::Events::Event::HIT_GROUND_EVENT");
+				command.execute(&input, gpp::Events::Event::HIT_GROUND_EVENT);
+			}
+		}
+		else if (t_e.type == SDL_KEYUP) // Deal with KeyReleased
+		{
+			// Run and Stop Attack
+			if (t_e.key.keysym.sym == SDLK_z &&
+				t_e.key.keysym.sym == SDLK_RIGHT)
+			{
+				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
+				command.execute(&input, gpp::Events::Event::RUN_RIGHT_START_EVENT);
+			}
+			// Stop Attack
+			else if (t_e.key.keysym.sym == SDLK_z)
+			{
+				DEBUG_MSG("gpp::Events::Event::ATTACK_STOP_EVENT");
+				command.execute(&input, gpp::Events::Event::ATTACK_STOP_EVENT);
+			}
+			// Run and Stop Throw Attack
+			else if (t_e.key.keysym.sym == SDLK_x &&
+					 t_e.key.keysym.sym == SDLK_RIGHT)
+			{
+				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
+				command.execute(&input, gpp::Events::Event::RUN_RIGHT_START_EVENT);
+			}
+			// Stop Throw Attack
+			else if (t_e.key.keysym.sym == SDLK_x)
+			{
+				DEBUG_MSG("gpp::Events::Event::THROW_STOP_EVENT");
+				command.execute(&input, gpp::Events::Event::THROW_STOP_EVENT);
+			}
+			// Stop Running Right
+			else if (t_e.key.keysym.sym == SDLK_RIGHT)
+			{
+				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_STOP_EVENT");
+				command.execute(&input, gpp::Events::Event::RUN_RIGHT_STOP_EVENT);
+			}
+			// Stop Slide
+			else if (t_e.key.keysym.sym == SDLK_DOWN &&
+					 t_e.key.keysym.sym == SDLK_RIGHT)
+			{
+				DEBUG_MSG("gpp::Events::Event::RUN_RIGHT_START_EVENT");
+				command.execute(&input, gpp::Events::Event::RUN_RIGHT_START_EVENT);
+			}
+			// Stop Moving Up
+			else if (t_e.key.keysym.sym == SDLK_UP)
+			{
+				DEBUG_MSG("gpp::Events::Event::MOVE_UP_STOP_EVENT");
+				command.execute(&input, gpp::Events::Event::MOVE_UP_STOP_EVENT);
+			}
+			// Stop Moving Down
+			else if (t_e.key.keysym.sym == SDLK_DOWN)
+			{
+				DEBUG_MSG("gpp::Events::Event::MOVE_DOWN_STOP_EVENT");
+				command.execute(&input, gpp::Events::Event::MOVE_DOWN_STOP_EVENT);
+			}
+		}
+		else
+		{
+			DEBUG_MSG("gpp::Events::Event::NONE");
+			command.execute(&input, gpp::Events::Event::NONE);
+		}
+
+		// Handle input to Player
+		player.handleInput(input);
 	}
 }
 

@@ -1,9 +1,9 @@
 #ifndef REVIVED_PLAYER_STATE_H
 #define REVIVED_PLAYER_STATE_H
 
-#include "../include/Player.h"
-#include "../include/PlayerState.h"
-#include "../include/Clock.h"
+#include "Player.h"
+#include "PlayerState.h"
+#include "Clock.h"
 
 class RevivedPlayerState : public PlayerState {
 public:

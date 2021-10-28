@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "../include/Player.h"
-#include "../include/Events.h"
-#include "../include/IdlePlayerState.h"
+#include "Player.h"
+#include "Events.h"
+#include "IdlePlayerState.h"
 
 
 Player::Player(const AnimatedSprite& sprite) : m_animated_sprite(sprite)

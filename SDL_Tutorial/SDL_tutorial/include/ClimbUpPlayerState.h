@@ -1,8 +1,8 @@
 #ifndef CLIMB_UP_PLAYER_STATE_H
 #define CLIMB_UP_PLAYER_STATE_H
 
-#include "../include/Player.h"
-#include "../include/PlayerState.h"
+#include "Player.h"
+#include "PlayerState.h"
 
 class ClimbUpPlayerState : public PlayerState {
 public:

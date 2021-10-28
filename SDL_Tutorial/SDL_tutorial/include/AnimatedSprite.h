@@ -3,8 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
-#include "../include/Debug.h"
-#include "../include/Clock.h"
+#include "Debug.h"
+#include "Clock.h"
 
 using namespace std;
 
