@@ -28,6 +28,8 @@ Game::Game() :
 	m_rect.w = 200;
 	m_rect.h = 50;
 
+	Factory factory;
+
 	m_texture = loadFromFile(PLAYER_SPRITES, m_renderer);
 	if(m_texture == nullptr)
 	{

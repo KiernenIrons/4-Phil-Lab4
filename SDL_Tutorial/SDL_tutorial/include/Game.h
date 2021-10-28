@@ -8,6 +8,7 @@
 #include "AnimatedSprite.h"
 #include "Player.h"
 #include "Command.h"
+#include "Factory.h"
 
 class Game
 {
@@ -40,6 +41,7 @@ private:
 
 	SDL_Texture* m_texture{ nullptr };
 	Command command;
+	Factory factory;
 
 	inline SDL_Texture* loadFromFile(const char* const t_path, SDL_Renderer* t_renderer)
 	{
