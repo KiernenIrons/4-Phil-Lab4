@@ -29,7 +29,7 @@ Game::Game() :
 	m_rect.h = 50;
 
 	Factory factory;
-
+	
 	m_texture = loadFromFile(PLAYER_SPRITES, m_renderer);
 	if(m_texture == nullptr)
 	{
@@ -54,7 +54,6 @@ void Game::run()
 	{
 		processEvents(e);
 		update();
-		player.update();
 		render();
 	}
 
@@ -169,10 +168,7 @@ void Game::processEvents(SDL_Event t_e)
 				command.execute(&input, gpp::Events::Event::JUMP_UP_EVENT);
 			}
 			// Running Slide
-			else if (t_e.key.keysym.sym == SDLK_DOWN &&
-						 t_e.key.keysym.sym == SDLK_RIGHT ||
-					 t_e.key.keysym.sym == SDLK_RIGHT &&
-						 t_e.key.keysym.sym == SDLK_DOWN)
+			else if (t_e.key.keysym.sym == SDLK_KP_0)
 			{
 				DEBUG_MSG("gpp::Events::Event::SLIDE_EVENT");
 				command.execute(&input, gpp::Events::Event::SLIDE_EVENT);
@@ -263,7 +259,7 @@ void Game::processEvents(SDL_Event t_e)
 
 void Game::update()
 {
-	
+	player.update();
 }
 
 void Game::render()

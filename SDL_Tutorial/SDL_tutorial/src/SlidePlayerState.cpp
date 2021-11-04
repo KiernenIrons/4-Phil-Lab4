@@ -35,6 +35,8 @@ void SlidePlayerState::update(Player& player) {
 		player.getPlayerState()->enter(player);
 		delete temp; // Delete previous
 	}
+
+	std::cout << m_clock.getElapsedTimeAsSeconds() << std::endl;
 }
 void SlidePlayerState::enter(Player& player)
 {

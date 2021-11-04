@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <map>
+
 #include "Defines.h"
 #include "AnimatedSprite.h"
 #include "Player.h"

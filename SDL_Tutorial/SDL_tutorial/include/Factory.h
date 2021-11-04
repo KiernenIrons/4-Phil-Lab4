@@ -6,7 +6,7 @@ class Factory
 {
 public:
     template<typename T>
-    T getAction()
+    T* getAction()
     {
         return T();
     };
