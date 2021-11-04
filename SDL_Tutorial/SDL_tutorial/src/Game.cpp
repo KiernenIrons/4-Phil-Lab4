@@ -93,10 +93,7 @@ void Game::processEvents(SDL_Event t_e)
 				command.execute(&input, gpp::Events::Event::REVIVED_EVENT);
 			}
 			// Running attack
-			else if (t_e.key.keysym.sym == SDLK_z &&
-						 t_e.key.keysym.sym == SDLK_RIGHT ||
-					 t_e.key.keysym.sym == SDLK_RIGHT &&
-						 t_e.key.keysym.sym == SDLK_z)
+			else if (t_e.key.keysym.sym == SDLK_g)
 			{
 				DEBUG_MSG("gpp::Events::Event::ATTACK_START");
 				command.execute(&input, gpp::Events::Event::ATTACK_START_EVENT);
@@ -108,10 +105,7 @@ void Game::processEvents(SDL_Event t_e)
 				command.execute(&input, gpp::Events::Event::ATTACK_START_EVENT);
 			}
 			// Throw attack
-			else if (t_e.key.keysym.sym == SDLK_x &&
-						 t_e.key.keysym.sym == SDLK_RIGHT ||
-					 t_e.key.keysym.sym == SDLK_RIGHT &&
-						 t_e.key.keysym.sym == SDLK_x)
+			else if (t_e.key.keysym.sym == SDLK_k)
 			{
 				DEBUG_MSG("gpp::Events::Event::THROW_START_EVENT");
 				command.execute(&input, gpp::Events::Event::THROW_START_EVENT);
@@ -153,10 +147,7 @@ void Game::processEvents(SDL_Event t_e)
 				command.execute(&input, gpp::Events::Event::HIT_LADDER_TOP_EVENT);
 			}
 			// Jump Run
-			if (t_e.key.keysym.sym == SDLK_SPACE &&
-					t_e.key.keysym.sym == SDLK_RIGHT ||
-				t_e.key.keysym.sym == SDLK_RIGHT &&
-					t_e.key.keysym.sym == SDLK_SPACE)
+			if (t_e.key.keysym.sym == SDLK_LSHIFT)
 			{
 				DEBUG_MSG("gpp::Events::Event::JUMP_UP_EVENT");
 				command.execute(&input, gpp::Events::Event::JUMP_UP_EVENT);
